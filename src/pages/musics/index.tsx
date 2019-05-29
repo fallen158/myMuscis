@@ -1,7 +1,7 @@
 const Index = () => {
   return (
     <div>
-      社交页面
+      music社交页面
     </div>
   )
 }

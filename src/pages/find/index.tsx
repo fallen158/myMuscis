@@ -1,6 +1,9 @@
 import Taro, { useState, useEffect } from '@tarojs/taro'
-import { Swiper, SwiperItem, Image } from '@tarojs/components'
+import { Swiper, SwiperItem, Image, View } from '@tarojs/components'
 import api from '../../utils/api'
+import SearchBar from '../../conmponents/SearchBar/index'
+import SongList from '../../conmponents/SongList/index'
+import './style.scss'
 
 const Index = () => {
   const [list, setList] = useState<Array<any>>([])
@@ -12,7 +15,8 @@ const Index = () => {
     })
   }, [])
   return (
-    <div>
+    <View>
+      <SearchBar />
       <Swiper
         className="find--banner"
         indicatorColor="#999"
@@ -31,7 +35,10 @@ const Index = () => {
           </SwiperItem>
         ))}
       </Swiper>
-    </div>
+      <View className="find-wrapper">
+        <SongList />
+      </View>
+    </View>
   )
 }
 
