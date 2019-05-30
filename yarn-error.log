@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add ~taro-ui/dist/style/components/flex.scss --silent --no-progress
+  /usr/local/bin/node /usr/local/bin/yarn add @/conmponents/SearchBar/index --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/var/folders/tc/cxsrgxrd7d192ktff5s_86kc0000gn/T/yarn--1559038036075-0.22858751201797767:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/Users/dahaojiang/.config/yarn/link/node_modules/.bin:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/Users/dahaojiang/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/dahaojiang/app/flutter/bin:/Users/dahaojiang/Downloads/cocos2d-x-3.17/templates:/Users/dahaojiang/Downloads:/Users/dahaojiang/Downloads/cocos2d-x-3.17/tools/cocos2d-console/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/dahaojiang/app/flutter/bin:/Users/dahaojiang/Downloads/cocos2d-x-3.17/templates:/Users/dahaojiang/Downloads:/Users/dahaojiang/Downloads/cocos2d-x-3.17/tools/cocos2d-console/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/mysql/bin:/usr/local/mysql/bin
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/var/folders/tc/cxsrgxrd7d192ktff5s_86kc0000gn/T/yarn--1559183201619-0.569303830292551:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/Users/dahaojiang/.config/yarn/link/node_modules/.bin:/Users/dahaojiang/Documents/WeChatProjects/myMusics/node_modules/.bin:/Users/dahaojiang/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/dahaojiang/app/flutter/bin:/Users/dahaojiang/Downloads/cocos2d-x-3.17/templates:/Users/dahaojiang/Downloads:/Users/dahaojiang/Downloads/cocos2d-x-3.17/tools/cocos2d-console/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/dahaojiang/app/flutter/bin:/Users/dahaojiang/Downloads/cocos2d-x-3.17/templates:/Users/dahaojiang/Downloads:/Users/dahaojiang/Downloads/cocos2d-x-3.17/tools/cocos2d-console/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/mysql/bin:/usr/local/mysql/bin
 
 Yarn version: 
   1.13.0
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/~taro-ui%2fdist/style/components/flex.scss: [not_found] document not found
+  Error: https://registry.npm.taobao.org/@%2fconmponents/SearchBar/index: [not_found] document not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66255:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129397:22)
       at Request.emit (events.js:182:13)

@@ -4,12 +4,18 @@
   padding: 0 10px;
   border: 10px solid;
 }
-.songlist-title {
+.songlist--title {
   height: 100px;
+  color: #666;
+  font-size: 26px;
+}
+
+.songlist--title__text--active {
   font-weight: 700;
   font-size: 34px;
-  color: '#333';
+  color: #333;
 }
+
 .songlist--items {
   width: 100%;
   display: flex;

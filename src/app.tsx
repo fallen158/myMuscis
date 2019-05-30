@@ -5,7 +5,6 @@ import { Provider } from '@tarojs/redux'
 import Index from './pages/index'
 import configStore from './store'
 import './utils/loading'
-
 import './app.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -27,11 +26,14 @@ class App extends Component {
   config: Config = {
     pages: [
       // 'pages/index/index',
-      'pages/find/index',
       'pages/musics/index',
+      'pages/find/index',
       // 'pages/social/index',
       // 'pages/video/index',
       'pages/userCenter/index',
+      'pages/newestMusic/index',
+      'pages/newwestDish/index',
+      'pages/songSquare/index'
     ],
     window: {
       navigationBarBackgroundColor: '#ffffff',

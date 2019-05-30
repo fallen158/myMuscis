@@ -2,6 +2,7 @@ import Taro, { useEffect, useState } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import { AtButton } from 'taro-ui'
 import api from '../../utils/api'
+import utils from '../../utils/index'
 import './styles.scss'
 
 interface ISongListData {
@@ -14,8 +15,7 @@ interface ISongListData {
 const Index = () => {
   const [songList, setSongList] = useState<[]>([])
   useEffect(() => {
-    api.geRecommendtSongList().then(data => {
-      console.log(data)
+    api.getRecommendtSongList().then((data) => {
       const newData = data.result.splice(0, 6)
       setSongList(newData)
     })
@@ -25,7 +25,11 @@ const Index = () => {
       <View className="at-row at-row__justify--between  at-row__align--center songlist-title">
         <View className="at-col at-col-5">推荐歌单</View>
         <View className="at-col at-col-5" style={{ textAlign: 'right' }}>
-          <AtButton circle size="small" type="secondary">
+          <AtButton
+            circle
+            size="small"
+            onClick={() => utils.handleNavigateTo('/pages/songSquare/index')}
+          >
             歌单广场
           </AtButton>
         </View>

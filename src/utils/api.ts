@@ -7,14 +7,20 @@ function getBanner() {
 }
 
 // 获取推荐歌单
-function geRecommendtSongList() {
+function getRecommendtSongList() {
   return request({ url: `${HOST_URL}/personalized` })
 }
 
-// 获取推荐新音乐
-function getRecommendMusic() {
+// 获取推荐新歌
+function getNewMusics() {
   return request({ url: `${HOST_URL}/personalized/newsong` })
 }
+
+// 获取推荐新碟
+function getNewDish() {
+  return request({ url: `${HOST_URL}/album/newest` })
+}
+
 
 // 获取每日推荐
 function getDateRecommend() {
@@ -71,12 +77,13 @@ function logout() {
 
 export default {
   getBanner,
-  geRecommendtSongList,
-  getRecommendMusic,
+  getRecommendtSongList,
   getDateRecommend,
   getLeaderboard,
+  getNewMusics,
   getMusicLyrices,
   getMusicComment,
+  getNewDish,
   login,
   register,
   logout
