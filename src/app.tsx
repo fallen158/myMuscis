@@ -26,14 +26,19 @@ class App extends Component {
   config: Config = {
     pages: [
       // 'pages/index/index',
-      'pages/musics/index',
       'pages/find/index',
-      // 'pages/social/index',
-      // 'pages/video/index',
+      'pages/musics/index',
+      'pages/radio/index',
+      'pages/users/login/index',
+      'pages/users/register/index',
+      'pages/recommendDaily/index',
+      'pages/songListDetails/index',
       'pages/userCenter/index',
       'pages/newestMusic/index',
       'pages/newwestDish/index',
-      'pages/songSquare/index'
+      'pages/songSquare/index',
+      'pages/musicPlay/index',
+      'pages/leaderboard/index'
     ],
     window: {
       navigationBarBackgroundColor: '#ffffff',

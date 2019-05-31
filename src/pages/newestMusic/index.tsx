@@ -1,7 +1,14 @@
-import Taro from '@tarojs/taro'
+import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-const Index = () => {
-  return <View>最新音乐</View>
+class Index extends Component {
+  config: Config = {
+    navigationBarTitleText: '最新音乐'
+  }
+  render() {
+    return (
+      <View>最新音乐</View>
+    )
+  }
 }
 
 export default Index

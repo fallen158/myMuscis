@@ -2,11 +2,11 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 class Index extends Component {
   config: Config = {
-    navigationBarTitleText: '新碟上架'
+    navigationBarTitleText: '登录'
   }
   render() {
     return (
-      <View>新碟上架</View>
+      <View>登录页面</View>
     )
   }
 }

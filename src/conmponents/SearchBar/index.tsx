@@ -3,7 +3,7 @@ import { AtSearchBar } from 'taro-ui'
 
 const SearchBar = () => {
   const [value, setValue] = useState('')
-  const onChange = value => {
+  const onChange = (value) => {
     setValue(value)
   }
   const onActionClick = () => {

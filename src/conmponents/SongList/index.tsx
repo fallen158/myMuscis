@@ -23,7 +23,7 @@ const Index = () => {
   return (
     <View>
       <View className="at-row at-row__justify--between  at-row__align--center songlist-title">
-        <View className="at-col at-col-5">推荐歌单</View>
+        <View className="at-col at-col-5" style={{fontWeight: 700}}>推荐歌单</View>
         <View className="at-col at-col-5" style={{ textAlign: 'right' }}>
           <AtButton
             circle
