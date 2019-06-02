@@ -7,13 +7,20 @@ function checkStatus(response: any) {
   const error: any = new Error(response.errMsg)
   error.response = response
   return error
-
 }
 
-export default async function request({ url = '', header = { 'content-type': 'application/json' } } = {}) {
-  const response = await Taro.request({ url, header })
+export default async function request({
+  url = '',
+  header = { 'content-type': 'application/json', withCredentials: true }
+} = {}) {
+  const response: any = await Taro.request({ url, header })
   checkStatus(response)
-  const data = await response.data
+  const { cookies, data } = await response
+  if (cookies && cookies.length >= 1) {
+    return {
+      cookies,
+      data
+    }
+  }
   return data
-
 }

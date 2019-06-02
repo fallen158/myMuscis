@@ -26,6 +26,7 @@ class App extends Component {
   config: Config = {
     pages: [
       // 'pages/index/index',
+      'pages/userCenter/index',
       'pages/find/index',
       'pages/musics/index',
       'pages/radio/index',
@@ -33,7 +34,6 @@ class App extends Component {
       'pages/users/register/index',
       'pages/recommendDaily/index',
       'pages/songListDetails/index',
-      'pages/userCenter/index',
       'pages/newestMusic/index',
       'pages/newwestDish/index',
       'pages/songSquare/index',

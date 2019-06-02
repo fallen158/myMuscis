@@ -4,7 +4,7 @@ import api from '../../utils/api'
 import './styles.scss'
 
 type IBannerState = {
-  imageUrl: string
+  pic: string
 }
 
 const Index = () => {
@@ -28,7 +28,7 @@ const Index = () => {
     >
       {list.map((v, i) => (
         <SwiperItem key={i}>
-          <Image className="img" src={v.imageUrl} />
+          <Image className="img" src={v.pic} />
         </SwiperItem>
       ))}
     </Swiper>

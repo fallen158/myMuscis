@@ -1,9 +1,10 @@
 import request from './request'
+
 const HOST_URL = 'http://129.204.110.185:3000'
 
 // 获取 banner 轮播图
 function getBanner() {
-  return request({ url: `${HOST_URL}/banner` })
+  return request({ url: `${HOST_URL}/banner?type=2` })
 }
 
 // 获取推荐歌单
@@ -21,15 +22,19 @@ function getNewDish() {
   return request({ url: `${HOST_URL}/album/newest` })
 }
 
-
 // 获取每日推荐
-function getDateRecommend() {
-  return request({ url: `${HOST_URL}/recommend/songs` })
+type ILoginOptions = {
+  'content-type': string
+  withCredentials: boolean
+  cookie: string
+}
+function getDateRecommend(options: ILoginOptions) {
+  return request({ url: `${HOST_URL}/recommend/songs`, header: options })
 }
 
 // 获取排行榜
 /**
- * 
+ *
  * "1": 云音乐热歌榜,
  * "8": iTunes榜,
  * "10": 日本Oricon周榜,
@@ -40,7 +45,6 @@ function getDateRecommend() {
 function getLeaderboard(id) {
   return request({ url: `${HOST_URL}/top/list?idx=${id}` })
 }
-
 
 // 获取评论
 /**
@@ -67,7 +71,9 @@ function login({ phone, password }) {
 
 // 注册
 function register({ phone, password, captcha, nickname }) {
-  return request({ url: `${HOST_URL}/captch/register?phone=${phone}&password=${password}&captcha=${captcha}&nickname=${nickname}` })
+  return request({
+    url: `${HOST_URL}/captch/register?phone=${phone}&password=${password}&captcha=${captcha}&nickname=${nickname}`
+  })
 }
 
 // 退出登录
@@ -88,4 +94,3 @@ export default {
   register,
   logout
 }
-
