@@ -13,7 +13,7 @@ class Index extends Component {
   render() {
     return (
       <View>
-        <SearchBar />
+        <SearchBar focus={false}/>
         <BannerImage />
         <View className="find--wrapper">
           <IconButtonWrapper />

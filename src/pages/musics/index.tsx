@@ -1,7 +1,7 @@
 import Taro, { useState, useEffect } from '@tarojs/taro'
 import { View, Button, Input } from '@tarojs/components'
 
-const Index = () => {
+const Index = (props) => {
   const [value, setValue] = useState('')
   const audioCtx = wx.createAudioContext('myAudio')
   const videoContext = wx.createVideoContext('myVideo')
@@ -63,5 +63,6 @@ const Index = () => {
     </View>
   )
 }
+
 
 export default Index

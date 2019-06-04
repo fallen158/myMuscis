@@ -8,13 +8,13 @@ type IBannerState = {
 }
 
 const Index = () => {
-  const [list, setList] = useState<Array<IBannerState>>([])
+  const [data, setData] =  useState<Array<IBannerState>>([])
   useEffect(() => {
-    api.getBanner().then((data) => {
-      const { banners } = data
-      const newBanner = banners.splice(0, 8)
-      setList(newBanner)
-    })
+    const fetchData = async () => {
+      const result = await api.getBanner()
+      setData(result.banners)
+    }
+    fetchData()
   }, [])
   return (
     <Swiper
@@ -26,7 +26,7 @@ const Index = () => {
       indicatorDots
       autoplay
     >
-      {list.map((v, i) => (
+      {data.map((v, i) => (
         <SwiperItem key={i}>
           <Image className="img" src={v.pic} />
         </SwiperItem>

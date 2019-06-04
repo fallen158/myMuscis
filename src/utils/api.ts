@@ -32,6 +32,16 @@ function getDateRecommend(options: ILoginOptions) {
   return request({ url: `${HOST_URL}/recommend/songs`, header: options })
 }
 
+// 搜索
+function getSearch(keywords: string) {
+  return request({ url: `${HOST_URL}/search?keywords=${keywords}` })
+}
+
+// 关键词搜索(传入搜索关键词可获得搜索建议 , 搜索结果同时包含单曲 , 歌手 , 歌单 ,mv 信息)
+function getSearchKeyword(keywords: string) {
+  return request({ url: `${HOST_URL}/search/suggest?keywords=${keywords}&type=mobile` })
+}
+
 // 获取排行榜
 /**
  *
@@ -90,6 +100,8 @@ export default {
   getMusicLyrices,
   getMusicComment,
   getNewDish,
+  getSearch,
+  getSearchKeyword,
   login,
   register,
   logout

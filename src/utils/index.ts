@@ -5,7 +5,7 @@ function handleNavigateTo(url: string): void {
 }
 
 
-
 export default {
-  handleNavigateTo
+  handleNavigateTo,
+  navigateBack: Taro.navigateBack
 }

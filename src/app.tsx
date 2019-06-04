@@ -26,8 +26,9 @@ class App extends Component {
   config: Config = {
     pages: [
       // 'pages/index/index',
-      'pages/userCenter/index',
       'pages/find/index',
+      'pages/searchPage/index',
+      'pages/userCenter/index',
       'pages/musics/index',
       'pages/radio/index',
       'pages/users/login/index',
