@@ -79,6 +79,15 @@ function login({ phone, password }) {
   return request({ url: `${HOST_URL}/login/cellphone?phone=${phone}&password=${password}` })
 }
 
+// 获取验证码
+function getPhoneCode(phone) {
+  return request({ url: `${HOST_URL}/captch/sent?phone=${phone}` })
+}
+// 手机验证码登录
+function loginPhone(phone, code) {
+  return request({ url: `${HOST_URL}/captch/verify?phone=${phone}&captcha=${code}` })
+}
+
 // 注册
 function register({ phone, password, captcha, nickname }) {
   return request({
@@ -102,6 +111,8 @@ export default {
   getNewDish,
   getSearch,
   getSearchKeyword,
+  getPhoneCode,
+  loginPhone,
   login,
   register,
   logout
