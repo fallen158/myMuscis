@@ -26,19 +26,19 @@ class App extends Component {
   config: Config = {
     pages: [
       // 'pages/index/index',
-      'pages/userCenter/index',
       'pages/find/index',
+      'pages/musicPlay/index',
+      'pages/userCenter/index',
       'pages/searchPage/index',
       'pages/musics/index',
       'pages/radio/index',
-      'pages/users/login/index',
       'pages/users/index',
       'pages/recommendDaily/index',
       'pages/songListDetails/index',
       'pages/newestMusic/index',
       'pages/newwestDish/index',
       'pages/songSquare/index',
-      'pages/musicPlay/index',
+  
       'pages/leaderboard/index'
     ],
     window: {

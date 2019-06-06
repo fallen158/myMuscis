@@ -1,5 +1,5 @@
 .user--container {
-  background: url(https://p3.music.126.net/KaWhc5Kl6Zaf11FFOQXnWg==/109951164096172574.jpg)
+  background: url(https://p3.music.126.net/WvHzvmnTR9h-uWPA8lINJA==/109951164107566472.jpg)
     no-repeat;
   background-position: center center;
   background-size: cover;
@@ -20,5 +20,37 @@
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255,255,255, 0.1);
+}
+
+.img {
+  width: 360px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.m-song-wrap{
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+
+}
+
+.m-song-disc {
+  width: 600px;
+  height: 600px;
+  margin-top: 140px;
+  background: url(https://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f)
+    no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-song-rollwrap {
+  width: 184px;
+  height: 184px;
+  border: 2px solid red;
 }

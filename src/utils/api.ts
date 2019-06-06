@@ -75,7 +75,7 @@ function getMusicLyrices(id) {
 }
 
 // 手机登录
-function login({ phone, password }) {
+function login(phone, password) {
   return request({ url: `${HOST_URL}/login/cellphone?phone=${phone}&password=${password}` })
 }
 
