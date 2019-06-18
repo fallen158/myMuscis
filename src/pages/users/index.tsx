@@ -96,7 +96,7 @@ const Index = ({ dispatch }) => {
   )
 }
 function mapPropsToState(state) {
-  const { userInfo } = state.users
+  const { userInfo } =state.global
   return {
     userInfo
   }

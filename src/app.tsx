@@ -28,8 +28,8 @@ class App extends Component {
       // 'pages/index/index',
       'pages/find/index',
       'pages/musicPlay/index',
-      'pages/userCenter/index',
       'pages/searchPage/index',
+      'pages/userCenter/index',
       'pages/musics/index',
       'pages/radio/index',
       'pages/users/index',
@@ -38,7 +38,6 @@ class App extends Component {
       'pages/newestMusic/index',
       'pages/newwestDish/index',
       'pages/songSquare/index',
-  
       'pages/leaderboard/index'
     ],
     window: {

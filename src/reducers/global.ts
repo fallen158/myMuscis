@@ -1,14 +1,16 @@
-import { LOGIN, LOGOUT } from '../constants/users'
+import { LOGIN, LOGOUT } from '../constants/global'
 
 type IInitState = {
-  userInfo: []
+  userInfo: [],
+  play: boolean
 }
 
 const INITIAL_STATE: IInitState = {
-  userInfo: []
+  userInfo: [],
+  play: false
 }
 
-export default function users(state = INITIAL_STATE, action) {
+export default function global(state = INITIAL_STATE, action) {
   switch (action.type) {
     case LOGIN:
       return {

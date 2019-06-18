@@ -42,6 +42,11 @@ function getSearchKeyword(keywords: string) {
   return request({ url: `${HOST_URL}/search/suggest?keywords=${keywords}&type=mobile` })
 }
 
+// 热搜
+function getHotSearch(){
+  return request({url:`${HOST_URL}/search/hot`})
+}
+
 // 获取排行榜
 /**
  *
@@ -110,6 +115,7 @@ export default {
   getMusicComment,
   getNewDish,
   getSearch,
+  getHotSearch,
   getSearchKeyword,
   getPhoneCode,
   loginPhone,
