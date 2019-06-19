@@ -6,7 +6,7 @@ const Index = (props) => {
   const audioCtx = wx.createAudioContext('myAudio')
   const videoContext = wx.createVideoContext('myVideo')
   audioCtx.setSrc(
-    'http://m10.music.126.net/20190530172711/b00b744e4c816d02c16f37fc47f996a6/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3'
+    'http://m10.music.126.net/20190619100901/eae9badb76a82130b810490b337a1309/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3'
   )
   useEffect(() => {
     // console.log(audioInfo)

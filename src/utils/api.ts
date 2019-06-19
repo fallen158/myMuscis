@@ -43,8 +43,8 @@ function getSearchKeyword(keywords: string) {
 }
 
 // 热搜
-function getHotSearch(){
-  return request({url:`${HOST_URL}/search/hot`})
+function getHotSearch() {
+  return request({ url: `${HOST_URL}/search/hot` })
 }
 
 // 获取排行榜
@@ -69,6 +69,21 @@ function getLeaderboard(id) {
  */
 function getMusicComment({ id, limit }) {
   return request({ url: `${HOST_URL}/comment/music?id=${id}&limit=${limit} ` })
+}
+
+// 获取音乐url
+function getSongUrl(id: number) {
+  return request({ url: `${HOST_URL}/song/url?id=${id} ` })
+}
+
+// 获取歌曲详情
+function getSongDetail(id:number){
+  return request({ url: `${HOST_URL}/song/detail?ids=${id} ` })
+}
+
+// 检验音乐是否可用
+function checkSongUrl(id: number) {
+  return request({ url: `${HOST_URL}/check/music?id=${id}` })
 }
 
 // 获取歌词
@@ -114,10 +129,13 @@ export default {
   getMusicLyrices,
   getMusicComment,
   getNewDish,
+  getSongDetail,
   getSearch,
+  checkSongUrl,
   getHotSearch,
   getSearchKeyword,
   getPhoneCode,
+  getSongUrl,
   loginPhone,
   login,
   register,

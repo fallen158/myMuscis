@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   top: 0;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   z-index: -1;
   transition: opacity 0.3s linear;
@@ -50,9 +50,13 @@
 //   top: 0;
 //   background-color: rgba(255,255,255, 0.1);
 // }
+
 .m-song-wrap{
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   z-index: 999;
 }
 
@@ -72,21 +76,44 @@
   position: relative;
   width: 600px;
   height: 600px;
-  margin-top: 140px;
-  background: url(https://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f)
+  margin-bottom: 200px;
+  background: url(https://i.loli.net/2019/06/19/5d0998bb3d4c434540.png)
     no-repeat;
   background-position: center center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.m-song-disc.play{
   animation: circling 20s infinite linear;
 }
 
-.m-song-rollwrap {
-  width: 184px;
-  height: 184px;
-  border: 2px solid red;
+
+.m-song-media{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.m-song-control{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  View{
+    font-size: 64px;
+    color: #fff;
+  }
+  .m-song-play{
+    border:1px solid;
+    border-radius:50%;
+    padding:14px 14px 14px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 

@@ -5,16 +5,16 @@ import { View, Text } from '@tarojs/components'
 import utils from '../../utils/index'
 import api from '../../utils/api'
 import './style.css'
+import { connect } from '@tarojs/redux'
 interface IHostList {
   first: string
 }
-
 interface IErrorState {
   isOpened: boolean
   text: string
 }
 
-const Index = () => {
+const Index = ({ songListInfos, dispatch }) => {
   const [value, setValue] = useState<string>('')
   const [error, setError] = useState<IErrorState>({
     isOpened: false,
@@ -24,15 +24,23 @@ const Index = () => {
   const [hotsList, setHotsList] = useState<IHostList[]>([])
   const [songList, setSongList] = useState([])
   useEffect(() => {
+    console.log(dispatch)
     Taro.setNavigationBarTitle({
       title: '搜索'
     })
     const fetchData = async () => {
       const { result } = await api.getHotSearch()
-      console.log(result.hots, 'HOTS')
-      setHotsList(result.hots)
+      if (result.hots.length >= 1) {
+        setHotsList(result.hots)
+        utils.setStorageSync('host_search', result.hots)
+      }
     }
-    fetchData()
+    const storageData = wx.getStorageSync('host_search')
+    if (!storageData || storageData.exired > Date.now()) {
+      fetchData()
+    } else {
+      setHotsList(storageData.cacheData)
+    }
   }, [])
   const handleChangeValue = useCallback(
     (value: string) => {
@@ -67,6 +75,40 @@ const Index = () => {
     },
     [name]
   )
+  const handleSongClick = async ({ author, name, id }) => {
+    const { success, message } = await api.checkSongUrl(id)
+    if (success) {
+      const { code, data } = await api.getSongUrl(id)
+      const { songs } = await api.getSongDetail(id)
+      if (code === 200 && songs.length >=1) {
+        let coverImg = songs[0].al.picUrl
+        let ident = false
+        songListInfos.map((v) => {
+          if (v.id === id) {
+            ident = true
+          }
+        })
+        if (!ident) {
+          dispatch({
+            type: 'SET_SONGLIST',
+            payload: {
+              author,
+              name,
+              id,
+              url: data[0].url,
+              coverImg
+            }
+          })
+          utils.handleRedirectTo('/pages/musicPlay/index')
+        }
+      }
+    } else {
+      setError({
+        isOpened: true,
+        text: message
+      })
+    }
+  }
   return (
     <View>
       <SearchBar
@@ -102,6 +144,13 @@ const Index = () => {
                 title={v.name}
                 note={v.artists[0].name + ' - ' + v.album.name}
                 arrow="right"
+                onClick={() =>
+                  handleSongClick({
+                    author: v.name,
+                    name: v.artists[0].name + ' - ' + v.album.name,
+                    id: v.id
+                  })
+                }
               />
             ))}
           </AtList>
@@ -112,4 +161,11 @@ const Index = () => {
   )
 }
 
-export default Index
+function mapPropsToState(state) {
+  const { songListInfos } = state.global
+  return {
+    songListInfos
+  }
+}
+
+export default connect(mapPropsToState)(Index)

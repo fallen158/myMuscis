@@ -11,10 +11,19 @@ function handleLaunch(url: string): void {
   Taro.reLaunch({ url })
 }
 
+// 缓存get数据
+function setStorageSync(name: string, data: object[]): void {
+  let storageData = {
+    cacheData: data,
+    expired: Date.now() + 60 * 1000 * 60 * 24
+  }
+  wx.setStorageSync(name, storageData)
+}
 
 export default {
   handleNavigateTo,
   handleRedirectTo,
   handleLaunch,
-  navigateBack: Taro.navigateBack
+  navigateBack: Taro.navigateBack,
+  setStorageSync
 }

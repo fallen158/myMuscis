@@ -1,27 +1,59 @@
 import Taro, { useState, useEffect } from '@tarojs/taro'
 import { View, Image, Button } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
 import utils from '../../utils/index'
 import api from '../../utils/api'
 import './styles.scss'
+import { string } from 'prop-types'
 
-const Index = () => {
-  const audioCtx = wx.createAudioContext('myAudio')
-  audioCtx.setSrc(
-    'http://m10.music.126.net/20190618172634/42fe2fc6c9cb41d783b50f439bffbf41/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3'
-  )
+const audioCtx = wx.createInnerAudioContext()
+audioCtx.onPlay(() => {
+  console.log('开始播放')
+})
+audioCtx.onError((res) => {
+  console.log(res.errMsg)
+  console.log(res.errCode)
+})
+
+const Index = ({ dispatch, play, songListInfos }) => {
+  const [lyircs, setLyircs] = useState<string>('')
   useEffect(() => {
     Taro.setNavigationBarTitle({
       title: '音乐播放'
     })
-    console.log(audioCtx)
-  })
+    audioCtx.src = songListInfos[0].url
+    wx.setStorageSync('SONGLIST', songListInfos)
+    dispatch({ type: 'PLAY_MUSIC' })
+    audioCtx.play()
+
+    const fetchLyircs = async () => {
+      const { code, lrc } = await api.getMusicLyrices(songListInfos[0].id)
+      if (code === 200) {
+        setLyircs(lrc)
+        console.log(lrc)
+      }
+      console.log(lyircs,'--------')
+    }
+    fetchLyircs()
+  }, [])
+  const playMusic = () => {
+    console.log('播放音乐')
+    dispatch({ type: 'PLAY_MUSIC' })
+    audioCtx.play()
+  }
+  const stopMusic = () => {
+    console.log('暂停音乐')
+    dispatch({ type: 'STOP_MUSIC' })
+    audioCtx.pause()
+  }
   return (
     <View>
       <View className="user--container">
+        {/* <audio src="{{src}}" id="myAudio" /> */}
         {/* <View className="m-song-bg">
           <Image className="m-song-img" src='https://p3.music.126.net/WvHzvmnTR9h-uWPA8lINJA==/109951164107566472.jpg' />
         </View> */}
-        <Button type="primary" onClick={() => audioCtx.play()}>
+        {/* <Button type="primary" onClick={() => audioCtx.play()}>
           播放
         </Button>
         <Button type="primary" onClick={() => audioCtx.pause()}>
@@ -32,18 +64,24 @@ const Index = () => {
         </Button>
         <Button type="primary" onClick={() => audioCtx.seek(0)}>
           回到开头
-        </Button>
+        </Button> */}
 
         <View className="m-song-wrap">
-          <View className="m-song-disc">
-            <Image
-              className="img"
-              src="http://p1.music.126.net/qXoj3GTwWWtDDETq72oovQ==/109951164107576105.jpg?imageView&thumbnail=360y360&quality=75&tostatic=0"
-            />
-            <Image
-              className="play_img"
-              src="../../assets/pyay.png"
-            />
+          <View className={play ? 'm-song-disc play' : 'm-song-disc'}>
+            <Image className="img" src={songListInfos[0].coverImg} />
+          </View>
+          <View className="m-song-media">
+            <View className="m-song-control">
+              <View className="at-icon at-icon-shuffle-play" />
+              <View className="at-icon at-icon-prev" />
+              {play ? (
+                <View className="at-icon at-icon-pause m-song-play" onClick={stopMusic} />
+              ) : (
+                <View className="at-icon at-icon-play m-song-play" onClick={playMusic} />
+              )}
+              <View className="at-icon at-icon-next" />
+              <View className="at-icon at-icon-playlist" />
+            </View>
           </View>
         </View>
       </View>
@@ -51,4 +89,12 @@ const Index = () => {
   )
 }
 
-export default Index
+function mapPropsToState(state) {
+  const { play, songListInfos } = state.global
+  return {
+    play,
+    songListInfos
+  }
+}
+
+export default connect(mapPropsToState)(Index)
