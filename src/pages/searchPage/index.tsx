@@ -36,7 +36,7 @@ const Index = ({ songListInfos, dispatch }) => {
       }
     }
     const storageData = wx.getStorageSync('host_search')
-    if (!storageData || storageData.exired > Date.now()) {
+    if (storageData && storageData.expired < Date.now()) {
       fetchData()
     } else {
       setHotsList(storageData.cacheData)
@@ -75,32 +75,39 @@ const Index = ({ songListInfos, dispatch }) => {
     },
     [name]
   )
-  const handleSongClick = async ({ author, name, id }) => {
+  const handleSongClick = async ({
+    singer,
+    title,
+    epname,
+    id
+  }: {
+    singer: string
+    title: string
+    epname: string
+    id: number
+  }) => {
     const { success, message } = await api.checkSongUrl(id)
     if (success) {
       const { code, data } = await api.getSongUrl(id)
       const { songs } = await api.getSongDetail(id)
-      if (code === 200 && songs.length >=1) {
+      // const {  lrc } = await api.getMusicLyrices(id)
+      if (code === 200 && songs.length >= 1) {
         let coverImg = songs[0].al.picUrl
-        let ident = false
-        songListInfos.map((v) => {
-          if (v.id === id) {
-            ident = true
-          }
-        })
+        let ident = utils.dedupArray(songListInfos, id)
         if (!ident) {
           dispatch({
             type: 'SET_SONGLIST',
             payload: {
-              author,
-              name,
+              singer,
+              title,
+              epname,
               id,
-              url: data[0].url,
+              musicUrl: data[0].url,
               coverImg
             }
           })
-          utils.handleRedirectTo('/pages/musicPlay/index')
         }
+        utils.handleRedirectTo('/pages/musicPlay/index')
       }
     } else {
       setError({
@@ -146,8 +153,9 @@ const Index = ({ songListInfos, dispatch }) => {
                 arrow="right"
                 onClick={() =>
                   handleSongClick({
-                    author: v.name,
-                    name: v.artists[0].name + ' - ' + v.album.name,
+                    singer: v.artists[0].name,
+                    title: v.name,
+                    epname: v.album.name,
                     id: v.id
                   })
                 }

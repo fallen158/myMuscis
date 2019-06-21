@@ -1,6 +1,6 @@
 import Taro, { useEffect, useState } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtList,AtToast, AtListItem } from 'taro-ui'
+import { AtList, AtToast, AtListItem } from 'taro-ui'
 import api from '../../utils/api'
 import utils from '../../utils/index'
 import { connect } from '@tarojs/redux'
@@ -36,31 +36,33 @@ const Index = ({ songListInfos, dispatch }) => {
       }
     }
     const storageData = wx.getStorageSync('recommendDaily_data')
-    if (!storageData ||  storageData.exired > Date.now()) {
+    if (storageData && storageData.expired < Date.now()) {
       fetchData()
     } else {
       setData(storageData.cacheData)
     }
   }, [])
-  const handleSongClick = async ({ author, name, id ,coverImg}) => {
+  const handleSongClick = async ({ singer, title, epname, id, coverImg }) => {
     const { success, message } = await api.checkSongUrl(id)
     if (success) {
       const { code, data } = await api.getSongUrl(id)
-      if (code === 200 ) {
+      if (code === 200) {
         let ident = false
         songListInfos.map((v) => {
           if (v.id === id) {
             ident = true
           }
         })
+
         if (!ident) {
           dispatch({
             type: 'SET_SONGLIST',
             payload: {
-              author,
-              name,
+              singer,
+              title,
+              epname,
               id,
-              url: data[0].url,
+              musicUrl: data[0].url,
               coverImg
             }
           })
@@ -89,10 +91,11 @@ const Index = ({ songListInfos, dispatch }) => {
                 thumb={v.album.picUrl}
                 onClick={() =>
                   handleSongClick({
-                    author: v.name,
-                    name: v.album.artists[0].name + ' - ' + v.album.name,
+                    singer: v.artists[0].name,
+                    title: v.name,
+                    epname: v.album.name,
                     id: v.id,
-                    coverImg:v.album.picUrl
+                    coverImg: v.album.picUrl
                   })
                 }
               />

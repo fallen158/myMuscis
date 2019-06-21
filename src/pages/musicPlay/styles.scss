@@ -1,3 +1,9 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .user--container {
   background: url(https://p3.music.126.net/WvHzvmnTR9h-uWPA8lINJA==/109951164107566472.jpg)
     no-repeat;
@@ -8,56 +14,32 @@
   right: 0;
   top: 0;
   height: 100vh;
-  overflow: hidden;
   z-index: -1;
   transition: opacity 0.3s linear;
+  @include flexCenter;
+  flex-direction: column;
 }
 
-// .m-song-bg{
-//   background-position: center center;
-//   background-size: cover;
-//   position: fixed;
-//   left: 0;
-//   right: 0;
-//   top: 0;
-//   height: 100vh;
-//   width: 100%;
-//   overflow: hidden;
-//   z-index: -1;
-//   .m-song-img{
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-// }
-
-// .m-song-bg::after {
-//   content: ' ';
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   top: 0;
-//   background-color: rgba(255,255,255, 0.1);
-// }
-
-// .user--container:after {
-//   content: ' ';
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   top: 0;
-//   background-color: rgba(255,255,255, 0.1);
-// }
-
-.m-song-wrap{
-  height: 100%;
+.m-song-title{
+  height: 10%;
+}
+.m-song-wrap {
+  height: 70%;
+  width: 100%;
   display: flex;
+  @include flexCenter;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  z-index: 9;
+}
+
+.m-song-wrap::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .img {
@@ -66,7 +48,7 @@
   object-fit: cover;
   border-radius: 50%;
 }
-.play_img{
+.play_img {
   position: absolute;
   width: 100px;
   height: 100px;
@@ -74,54 +56,48 @@
 
 .m-song-disc {
   position: relative;
-  width: 600px;
-  height: 600px;
-  margin-bottom: 200px;
-  background: url(https://i.loli.net/2019/06/19/5d0998bb3d4c434540.png)
-    no-repeat;
+  min-width: 530px;
+  min-height: 530px;
+  background: url(https://i.loli.net/2019/06/19/5d0998bb3d4c434540.png) no-repeat;
   background-position: center center;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter;
+  z-index: 999;
 }
 
-.m-song-disc.play{
+.m-song-disc.play {
   animation: circling 20s infinite linear;
 }
 
-
-.m-song-media{
+.m-song-media {
+  height: 20%;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  @include flexCenter;
+  z-index: 999;
 }
 
-.m-song-control{
+.m-song-control {
   width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  View{
+  View {
     font-size: 64px;
     color: #fff;
   }
-  .m-song-play{
-    border:1px solid;
-    border-radius:50%;
-    padding:14px 14px 14px 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .m-song-play {
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 14px 14px 14px 18px;
+    @include flexCenter;
   }
 }
 
-
-@keyframes circling{
-  0%{
+@keyframes circling {
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(1turn);
   }
 }

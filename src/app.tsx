@@ -40,12 +40,13 @@ class App extends Component {
       'pages/songSquare/index',
       'pages/leaderboard/index'
     ],
+    requiredBackgroundModes: ['audio'],
     window: {
       navigationBarBackgroundColor: '#ffffff',
       navigationBarTextStyle: 'black',
       navigationBarTitleText: 'myMusics',
       backgroundColor: '#eeeeee',
-      backgroundTextStyle: 'light',
+      backgroundTextStyle: 'light'
     },
     tabBar: {
       color: '#8a8a8a',
@@ -57,7 +58,7 @@ class App extends Component {
           pagePath: 'pages/find/index',
           text: '发现',
           iconPath: 'assets/find.png',
-          selectedIconPath: 'assets/find_active.png',
+          selectedIconPath: 'assets/find_active.png'
         },
         // {
         //   pagePath: 'pages/musics/index',
@@ -69,7 +70,7 @@ class App extends Component {
           pagePath: 'pages/musics/index',
           text: '我的',
           iconPath: 'assets/music.png',
-          selectedIconPath: 'assets/music_active.png',
+          selectedIconPath: 'assets/music_active.png'
         },
         // {
         //   pagePath: 'pages/video/index',
@@ -81,10 +82,10 @@ class App extends Component {
           pagePath: 'pages/userCenter/index',
           text: '账号',
           iconPath: 'assets/user.png',
-          selectedIconPath: 'assets/user_active.png',
-        },
-      ],
-    },
+          selectedIconPath: 'assets/user_active.png'
+        }
+      ]
+    }
   }
 
   componentDidMount() {}

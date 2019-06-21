@@ -15,17 +15,20 @@ const Index = () => {
       const result = await api.getBanner()
       if (result.code === 200) {
         setData(result.banners)
-        utils.setStorageSync('music_banners',result.banners)
+        utils.setStorageSync('music_banners', result.banners)
       }
     }
+
     const storageData = wx.getStorageSync('music_banners')
-    if(!storageData || storageData.exired > Date.now()){
+    if (storageData && storageData.expired < Date.now()) {
       fetchData()
-    }else{
+    } else {
       setData(storageData.cacheData)
     }
-
   }, [])
+  const handleClick = () => {
+    // 不用Redux传递数据，用localStorage
+  }
   return (
     <Swiper
       className="find--banner"
@@ -37,7 +40,17 @@ const Index = () => {
       autoplay
     >
       {data.map((v, i) => (
-        <SwiperItem key={i}>
+        <SwiperItem
+          key={i}
+          // onClick={() =>
+          //   handleClick({
+          //     singer: v.artists[0].name,
+          //     title: v.name,
+          //     epname: v.album.name,
+          //     id: v.id
+          //   })
+          // }
+        >
           <Image className="img" src={v.pic} />
         </SwiperItem>
       ))}
